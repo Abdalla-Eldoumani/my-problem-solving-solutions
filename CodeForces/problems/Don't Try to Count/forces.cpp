@@ -4,19 +4,20 @@ using namespace std;
 inline void solve() {
     int t; cin >> t;
     while (t--) {
+        int n, m; cin >> n >> m;
         string x, s; cin >> x >> s;
-
-        int min_operations = 0;
-        while (x.find(s) == string::npos) {
-            if (x.size() > 10) {
-                min_operations = -1;
-                break;
-            }
+        
+        int ops = 0;
+        while (x.find(s) == string::npos && ops < 6) {
             x += x;
-            min_operations++;
+            ops++;
         }
-
-        cout << min_operations << '\n';
+        
+        if (x.find(s) != string::npos) {
+            cout << ops << '\n';
+        } else {
+            cout << -1 << '\n';
+        }
     }
 }
 
